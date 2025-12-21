@@ -74,7 +74,8 @@ pair <int,int> second_largest(vector<int> nums){
         After traversing the array, the second largest element will be stored in the variable second_large.
     */
     int large,s_large,small,s_small;
-    large=s_large=small=s_small=nums[0];
+    large=small=nums[0];
+    s_large=s_small=-1;
     for (int i = 0; i < nums.size(); i++)
     {
         if (nums[i]>large)
@@ -82,11 +83,21 @@ pair <int,int> second_largest(vector<int> nums){
             s_large=large;
             large=nums[i];
         }
+        else if (nums[i]<large && nums[i]>s_large)
+        {
+            s_large=nums[i];
+        }
+        
         if (nums[i]<small)
         {
             s_small=small;
             small=nums[i];
         }
+        else if (nums[i]>small && nums[i]<s_small)
+        {
+            s_small=nums[i];
+        }
+        
         
     }
     return {s_small,s_large};

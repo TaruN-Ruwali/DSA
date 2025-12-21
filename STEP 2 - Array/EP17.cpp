@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int largest(vector<int> nums){
+int largest(vector<int>& nums){
      //Brute Force          time- O(nlogn) space- O(1)
 
     stable_sort(begin(nums),end(nums));
@@ -20,7 +20,7 @@ int largest(vector<int> nums){
     
 }
 
-pair <int,int> second_largest(vector<int> nums){
+pair <int,int> second_largest(vector<int>& nums){
 
 
 
@@ -32,17 +32,17 @@ pair <int,int> second_largest(vector<int> nums){
     The element at the second index from the end (index length-2) is the second largest element.
     */
 
-    // if (nums.size()<=1)
-    // {
-    //     return {-1,-1};
-    // second
+    if (nums.size()<=1)
+    {
+        return {-1,-1};
+    }
     
 
-    // std:stable_sort(begin(nums),end(nums));
-    // pair<firstnt,int> p={nums[1],nums[nums.size()-2]};
-    // return p;
+    std:stable_sort(begin(nums),end(nums));
+    pair<int,int> p={nums[1],nums[nums.size()-2]};
+    return p;
 
-    //Better Approach           time- O(n) space- O(1)
+    //Better Approach           time- O(2n) space- O(1)
 
     /*
     Perform a single traversal to find the smallest and largest elements in the array.
@@ -92,26 +92,35 @@ pair <int,int> second_largest(vector<int> nums){
         Else if the current element is larger than 'second_large', update the value of second_large.
         After traversing the array, the second largest element will be stored in the variable second_large.
     */
-    int large,s_large,small,s_small;
-    large=s_large=small=s_small=nums[0];
-    for (int i = 0; i < nums.size(); i++)
-    {
-        if (nums[i]>large)
-        {
-            s_large=large;
-            large=nums[i];
-        }
-        if (nums[i]<small)
-        {
-            s_small=small;
-            small=nums[i];
-        }
+    // int large,s_large,small,s_small;
+    // large=small=nums[0];
+    // s_large=s_small=-1;
+    // for (int i = 0; i < nums.size(); i++)
+    // {
+    //     if (nums[i]>large)
+    //     {
+    //         s_large=large;
+    //         large=nums[i];
+    //     }
+    //     else if (nums[i]<large && nums[i]>s_large)
+    //     {
+    //         s_large=nums[i];
+    //     }
+    //     if (nums[i]<small)
+    //     {
+    //         s_small=small;
+    //         small=nums[i];
+    //     }
+    //     else if (nums[i]>small && nums[i]<s_small)
+    //     {
+    //         s_small=nums[i];
+    //     }
         
-    }
-    return {s_small,s_large};
+    // }
+    // return {s_small,s_large};
 }
 
-bool issort(vector<int> nums){
+bool issort(vector<int>& nums){
     //Brute Force       time- O(n^2)  space- O(1)
     /*
     The idea is pretty simple here, We will start with the element at the 0th index, and will compare it with all of its future elements that are present in the array.
@@ -145,9 +154,39 @@ bool issort(vector<int> nums){
     
 }
 
-int main(){
-    vector<int> nums={6,5,4,3,2};
+int removeduplicate(vector<int>& nums){
+
+    // Brute Force              time- O(nlogn + n)  space- O(n)
+
+    set<int> seen;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        seen.insert(nums[i]);   //insert takes time- logn
+    }
+    int j=0;
+    for (auto i : seen )
+    {
+        nums[j]=i;
+        j++;
+    }
     
-    cout<<issort(nums)<<endl;
+    return j;
+
+    // Optimal          time-O()    space-O()
+
+
+
+}
+
+
+int main(){
+    vector<int> nums={1,1,2,2,2,3,3};
+    int j=removeduplicate(nums);
+    for (int i = 0; i < j; i++)
+    {
+        cout<<nums[i]<<" "<<endl;
+    }
+    
+    
     return 0;
 }
