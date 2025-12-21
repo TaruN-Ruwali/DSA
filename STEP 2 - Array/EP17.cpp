@@ -49,35 +49,35 @@ pair <int,int> second_largest(vector<int>& nums){
     After that, traverse the array again to find the element just greater than the smallest element (this will be the second smallest).
     Similarly, find the element just smaller than the largest element (this will be the second largest).
     */
-    // int large=nums[0],small=nums[0];
-    // for (int i = 1; i < nums.size(); i++)
-    // {
-    //     if (nums[i]>large)
-    //     {
-    //         large=nums[i];
-    //     }
-    //     if (nums[i]<small)
-    //     {
-    //         small=nums[i];
-    //     } 
-    // }
+    int large=nums[0],small=nums[0];
+    for (int i = 1; i < nums.size(); i++)
+    {
+        if (nums[i]>large)
+        {
+            large=nums[i];
+        }
+        if (nums[i]<small)
+        {
+            small=nums[i];
+        } 
+    }
 
-    // cout<<small<<" "<<large<<endl;
+    cout<<small<<" "<<large<<endl;
     
-    // pair<int,int> s={nums[0],nums[0]};
-    // for (int i = 1; i < nums.size(); i++)
-    // {
-    //     if (nums[i]<large && nums[i]>s.second)
-    //     {
-    //         s.second=nums[i];
-    //     }
-    //     else if (nums[i]>small && nums[i]<s.first)
-    //     {
-    //         s.first=nums[i];
-    //     } 
+    pair<int,int> s={nums[0],nums[0]};
+    for (int i = 1; i < nums.size(); i++)
+    {
+        if (nums[i]<large && nums[i]>s.second)
+        {
+            s.second=nums[i];
+        }
+        else if (nums[i]>small && nums[i]<s.first)
+        {
+            s.first=nums[i];
+        } 
         
-    // }
-    // return s;
+    }
+    return s;
 
     // Optimal         time- O(n) space- (1)
 
@@ -92,32 +92,32 @@ pair <int,int> second_largest(vector<int>& nums){
         Else if the current element is larger than 'second_large', update the value of second_large.
         After traversing the array, the second largest element will be stored in the variable second_large.
     */
-    // int large,s_large,small,s_small;
-    // large=small=nums[0];
-    // s_large=s_small=-1;
-    // for (int i = 0; i < nums.size(); i++)
-    // {
-    //     if (nums[i]>large)
-    //     {
-    //         s_large=large;
-    //         large=nums[i];
-    //     }
-    //     else if (nums[i]<large && nums[i]>s_large)
-    //     {
-    //         s_large=nums[i];
-    //     }
-    //     if (nums[i]<small)
-    //     {
-    //         s_small=small;
-    //         small=nums[i];
-    //     }
-    //     else if (nums[i]>small && nums[i]<s_small)
-    //     {
-    //         s_small=nums[i];
-    //     }
+    int large,s_large,small,s_small;
+    large=small=nums[0];
+    s_large=s_small=-1;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i]>large)
+        {
+            s_large=large;
+            large=nums[i];
+        }
+        else if (nums[i]<large && nums[i]>s_large)
+        {
+            s_large=nums[i];
+        }
+        if (nums[i]<small)
+        {
+            s_small=small;
+            small=nums[i];
+        }
+        else if (nums[i]>small && nums[i]<s_small)
+        {
+            s_small=nums[i];
+        }
         
-    // }
-    // return {s_small,s_large};
+    }
+    return {s_small,s_large};
 }
 
 bool issort(vector<int>& nums){
@@ -172,10 +172,32 @@ int removeduplicate(vector<int>& nums){
     
     return j;
 
-    // Optimal          time-O()    space-O()
+    // Optimal   (Two pointer approach)       time-O(n)    space-O(1)
 
+    /*
+    Take 2 pointers p1,p2 . Place p1 at 0 which will alwys be part of unique array.
+    start a loop of p2 from 1 to nums.size() 
+    compare the elements nums[p1] & nums[p2]
+    if not equal - replace nums[p1+1] position with nums[p2] and shift p1 i.e. p1++
+    if equal - skip
+    at last return p1+1
+    */
 
+    int p1=0;
+    
+    for (int p2 = 1; p2 < nums.size(); p2++)
+    {
+        
+        if (nums[p1]!=nums[p2])
+        {
+            nums[p1+1]=nums[p2];
+            p1++;
+        }
 
+        
+    }
+    
+    return p1+1;
 }
 
 
