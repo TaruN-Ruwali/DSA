@@ -175,7 +175,7 @@ int removeduplicate(vector<int>& nums){
     // Optimal   (Two pointer approach)       time-O(n)    space-O(1)
 
     /*
-    Take 2 pointers p1,p2 . Place p1 at 0 which will alwys be part of unique array.
+    Take 2 pointers p1,p2 . Place p1 at 0th index which will alwys be part of unique array.
     start a loop of p2 from 1 to nums.size() 
     compare the elements nums[p1] & nums[p2]
     if not equal - replace nums[p1+1] position with nums[p2] and shift p1 i.e. p1++
