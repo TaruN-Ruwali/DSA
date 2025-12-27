@@ -94,21 +94,21 @@ void movezeros(vector<int>& nums){
 
     // Brute Force              time- O(n)      space- O(n)
 
-    // int temp[nums.size()]={0};
-    // int k=0;
-    // for (int i = 0; i < nums.size(); i++)
-    // {
-    //     if (nums[i]!=0)
-    //     {
-    //         temp[k]=nums[i];
-    //         k++;
-    //     }
+    int temp[nums.size()]={0};
+    int k=0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i]!=0)
+        {
+            temp[k]=nums[i];
+            k++;
+        }
         
-    // }
-    // for (int i = 0; i < nums.size(); i++)
-    // {
-    //     nums[i]=temp[i];
-    // }
+    }
+    for (int i = 0; i < nums.size(); i++)
+    {
+        nums[i]=temp[i];
+    }
 
 
     // Optimal      time- O(n)      space- O(1)
@@ -158,6 +158,12 @@ int Linear_search(vector<int>& nums,int target){
 }
 
 void unin(vector<int>& nums1, vector<int>& nums2){
+
+    // Brute Force              time- O(n1logn + n2logn) + O(n1+n2)         space- O(n1+n2) + O(n1+n2)//only used for returning result
+    /*
+    Insert both arrays in set(stores unique element)
+    return an union array with all elements
+    */
     set<int> st;
     for (int i = 0; i < nums1.size(); i++)
     {
@@ -168,13 +174,19 @@ void unin(vector<int>& nums1, vector<int>& nums2){
     {
         st.insert(nums2[i]);
     }
-    int j=0;
-    nums1[nums1.size()+nums2.size()];
-    for (auto i : st)
+    int unin[st.size()],j=0;
+    for (auto i : st )
     {
-        nums1[j]=i;
+        unin[j]=i;
         j++;
     }
+    
+    for (int i = 0; i < st.size(); i++)
+    {
+        cout<<unin[i]<<" ";
+    }
+
+    // Optimal (2 pointer )
     
  
 }
@@ -186,10 +198,10 @@ int main(){
     // movezeros(nums);
     // cout<<Linear_search(nums,13);
     // unin(nums1,nums2);
-    for (int i = 0; i < nums1.size(); i++)
-    {
-        cout<<nums1[i]<<" ";
-    }
+    // for (int i = 0; i < nums1.size(); i++)
+    // {
+    //     cout<<nums1[i]<<" ";
+    // }
     
 
     return 0;
