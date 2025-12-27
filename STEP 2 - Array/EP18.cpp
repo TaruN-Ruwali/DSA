@@ -157,42 +157,112 @@ int Linear_search(vector<int>& nums,int target){
     
 }
 
-void unin(vector<int>& nums1, vector<int>& nums2){
+vector<int> unin(vector<int>& nums1, vector<int>& nums2){
 
     // Brute Force              time- O(n1logn + n2logn) + O(n1+n2)         space- O(n1+n2) + O(n1+n2)//only used for returning result
     /*
     Insert both arrays in set(stores unique element)
     return an union array with all elements
     */
-    set<int> st;
-    for (int i = 0; i < nums1.size(); i++)
-    {
-        st.insert(nums1[i]);
-    }
+    // set<int> st;
+    // for (int i = 0; i < nums1.size(); i++)
+    // {
+    //     st.insert(nums1[i]);
+    // }
 
-    for (int i = 0; i < nums2.size(); i++)
-    {
-        st.insert(nums2[i]);
-    }
-    int unin[st.size()],j=0;
-    for (auto i : st )
-    {
-        unin[j]=i;
-        j++;
-    }
+    // for (int i = 0; i < nums2.size(); i++)
+    // {
+    //     st.insert(nums2[i]);
+    // }
+    // int unin[st.size()],j=0;
+    // for (auto i : st )
+    // {
+    //     unin[j]=i;
+    //     j++;
+    // }
     
-    for (int i = 0; i < st.size(); i++)
-    {
-        cout<<unin[i]<<" ";
-    }
+    // for (int i = 0; i < st.size(); i++)
+    // {
+    //     cout<<unin[i]<<" ";
+    // }
 
-    // Optimal (2 pointer )
+    // // Optimal (2 pointer )         time- O(n1+n2)      space- O(n1+n2)//only to return not solve
     
- 
+    // int n1=nums1.size();
+    // int n2=nums2.size();
+    // int i=0,j=0;
+    // vector<int> unionarr;
+    // while (i < n1 && j < n2)
+    // {
+    //     if (nums1[i] <= nums2[j])
+    //     {
+    //         if (unionarr.size()==0 || unionarr.back() != nums1[i])    
+    //         {
+    //             unionarr.push_back(nums1[i]);
+    //         }
+    //         i++;
+          
+    //     }
+    //     else
+    //     {
+    //         if (unionarr.size()==0 || unionarr.back() != nums2[j])    
+    //         {
+    //             unionarr.push_back(nums2[j]);
+    //         }
+    //         j++; 
+
+    //     }
+    // }
+
+    // while (j < n2)
+    // {
+    //         if (unionarr.size()==0 || unionarr.back() != nums2[j])    
+    //         {
+    //             unionarr.push_back(nums2[j]);
+    //         }
+    //         j++;   
+    // }
+
+    // while (i < n1)
+    // {
+    //         if (unionarr.size()==0 || unionarr.back() != nums1[i])    
+    //         {
+    //             unionarr.push_back(nums1[i]);
+    //         }
+    //         i++;   
+    // }
+    // for (int i = 0; i < unionarr.size(); i++)
+    // {
+    //     cout<<unionarr[i]<<" ";
+    // }
+    
+    // return unionarr;
 }
+
+int max_consecutive_ones(vector<int>& nums){
+    int max=0,j=0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i]==1)
+        {
+            j++;
+        }
+        else
+        {
+            j=0;
+        }
+        if (j > max)
+        {
+            max = j;
+        }
+        
+    }
+    return max;
+}
+
 int main(){
-    vector<int> nums1={1,2,3,4,5,6,7,8,9,10};
-    vector<int> nums2={2,3,4,4,5,11,12};
+    vector<int> nums1={1, 0, 1, 1, 0, 1};
+    // vector<int> nums2={2,3,4,4,5};
     // rotate1(nums);
     // rotate_k_left(nums1,20001);
     // movezeros(nums);
@@ -202,6 +272,8 @@ int main(){
     // {
     //     cout<<nums1[i]<<" ";
     // }
+
+    cout<<max_consecutive_ones(nums1)<<endl;
     
 
     return 0;
