@@ -239,6 +239,54 @@ vector<int> unin(vector<int>& nums1, vector<int>& nums2){
     // return unionarr;
 }
 
+int missing_no(vector<int>& nums){
+    // Brute Force          time-   O(n^2)     space-  O(1)
+
+    // int n=nums.size();
+    // for (int i = 0; i < n; i++)   
+    // {
+    //     bool found=false;
+    //     for (int j = 0; j < n; j++)
+    //     {
+    //         if (nums[j]==i)
+    //         {
+    //             found=true;
+    //             break;
+    //         }    
+    //     }
+    //     if (found==false)
+    //     {
+    //         return i;
+    //     }
+    // }  
+
+    // Optimal (Sum of n natural no.s)      time- O(n)      space- O(1)
+
+    // int n=nums.size();
+    // int expected_sum=(n*(n+1))/2;
+    // int actual_sum=0;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     actual_sum+=nums[i];
+    // }
+    // return (expected_sum-actual_sum);
+
+    // Optimal  (XOR Operator)      time- O(n)      space- O(1)
+
+    int n=nums.size();
+    int xor_op=0;
+    for (int i = 1; i <= n; i++)
+    {
+        xor_op=xor_op^i;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        xor_op=xor_op^nums[i];
+    }
+
+    return xor_op;    
+}
+
 int max_consecutive_ones(vector<int>& nums){
     int max=0,j=0;
     for (int i = 0; i < nums.size(); i++)
@@ -261,19 +309,27 @@ int max_consecutive_ones(vector<int>& nums){
 }
 
 int main(){
-    vector<int> nums1={1, 0, 1, 1, 0, 1};
+    vector<int> nums1={9,6,4,2,3,5,7,0,1};
     // vector<int> nums2={2,3,4,4,5};
+
     // rotate1(nums);
+
     // rotate_k_left(nums1,20001);
+
     // movezeros(nums);
+
     // cout<<Linear_search(nums,13);
+
     // unin(nums1,nums2);
+
     // for (int i = 0; i < nums1.size(); i++)
     // {
     //     cout<<nums1[i]<<" ";
     // }
 
-    cout<<max_consecutive_ones(nums1)<<endl;
+    cout<<missing_no(nums1)<<endl;
+    
+    // cout<<max_consecutive_ones(nums1)<<endl;
     
 
     return 0;
