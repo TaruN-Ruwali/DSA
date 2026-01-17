@@ -308,8 +308,9 @@ int max_consecutive_ones(vector<int>& nums){
     return max;
 }
 
+
 int main(){
-    vector<int> nums1={9,6,4,2,3,5,7,0,1};
+    vector<int> nums1={-3, 2, 1};
     // vector<int> nums2={2,3,4,4,5};
 
     // rotate1(nums);
@@ -327,9 +328,11 @@ int main(){
     //     cout<<nums1[i]<<" ";
     // }
 
-    cout<<missing_no(nums1)<<endl;
-    
+    // cout<<missing_no(nums1)<<endl;
+
     // cout<<max_consecutive_ones(nums1)<<endl;
+
+   
     
 
     return 0;
