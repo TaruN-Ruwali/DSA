@@ -46,22 +46,43 @@ int maxSubArray(vector<int>& nums) {
 
         // Optimal (Kadane's algo)
 
+        // int max=INT_MIN;
+        // int sum=0;
+        // for(int i=0;i<nums.size();i++){
+        //     sum+=nums[i];
+        //     if(sum > max){
+        //         max=sum;
+        //     }
+        //     if(sum < 0){
+        //         sum=0;
+        //     }
+        // }
+        // return max;
+
+        // Follow up(Print index of such sub array)
+
         int max=INT_MIN;
         int sum=0;
+        int start_index=-1, end_index=-1;
         for(int i=0;i<nums.size();i++){
+            if(sum==0){
+                start_index=i;
+            }
             sum+=nums[i];
             if(sum > max){
+                end_index=i;
                 max=sum;
             }
             if(sum < 0){
                 sum=0;
             }
         }
+        cout<<start_index<<" "<<end_index<<endl;
         return max;
 }
 
 int main(){
-    vector<int> nums = {2,0,2,1,1,0};
+    vector<int> nums = {2, 3, 5, -2, 7, -4};
     cout<<maxSubArray(nums)<<endl;
     return 0;
 }
