@@ -34,7 +34,7 @@ vector<int> leaders(vector<int>& nums){
     // }
     // return result;
 
-    // Optimal Solution                 time-O()        space- O()
+    // Optimal Solution                 time-O(n)        space- O(n)    [for returning]
 
     /*
     Enter last element in result array.
