@@ -7,7 +7,7 @@ using namespace std;
     //     int mid = (l+h)/2;
     //     if(nums[mid]==target)return mid;
     //     else if(nums[mid]<target)return bs(nums,mid+1,h,target);
-    //     return bs(nums,l,h-1,target);
+    //     return bs(nums,l,mid-1,target);
     // }
 
         // Iterative Code
